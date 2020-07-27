@@ -34,6 +34,7 @@
     justify-content: center;
     align-items: center;
     transition: all 0.2s;
+    color: #993399;
 }
 
 .product-list article a:hover {
