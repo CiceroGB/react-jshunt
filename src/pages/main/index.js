@@ -20,7 +20,7 @@ export default class Main extends Component {
     }
 
     render() {
-        const {products}= this.state
+        const { products } = this.state
         return (
             <div className="product-list">
                 {products.map(product => (
@@ -33,7 +33,12 @@ export default class Main extends Component {
 
                     </article>
                 ))}
+                <div className="actions">
+                    <button>Previous</button>
+                    <button>Next</button>
+                </div>
             </div>
+
         )
     }
 }
