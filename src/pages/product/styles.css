@@ -1,14 +1,14 @@
 .product-info {
     max-width: 700px;
     margin: 20px auto 0;
-    padding: #FFF;
+    padding: 20px;
+    background: #fff;
     border-radius: 5px;
     border: 1px solid #dddd;
 }
 
 .product-info h1 {
     font-size: 24px;
-    margin-left: 30px;
 }
 
 .product-info p {
