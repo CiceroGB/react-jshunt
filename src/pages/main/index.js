@@ -5,7 +5,10 @@ import './styles.css'
 
 export default class Main extends Component {
     state = {
-        products: []
+        products: [],
+        productInfo:{
+        },
+        page:1
 
     };
     componentDidMount() {
@@ -13,14 +16,38 @@ export default class Main extends Component {
 
     }
 
-    loadProducts = async () => {
-        const response = await api.get('/products')
-        this.setState({ products: response.data.docs })
+    loadProducts = async (page =1) => {
+        const response = await api.get(`/products?page=${page}`);
+        const {docs,...productInfo} = response.data;
+        this.setState({ products: docs , productInfo , page});
 
     }
 
+
+    nextPag = ()=>{
+        const{page, productInfo} = this.state
+
+        if(page === productInfo.pages) return;
+
+        const pageNumber = page + 1;
+
+        this.loadProducts(pageNumber);
+    }
+
+    prevPag = ()=>{
+        const{page, productInfo} = this.state
+
+        if(page === 1) return;
+
+        const pageNumber = page - 1;
+
+        this.loadProducts(pageNumber);
+    }
+
+
+
     render() {
-        const { products } = this.state
+        const { products , page , productInfo} = this.state
         return (
             <div className="product-list">
                 {products.map(product => (
@@ -34,8 +61,8 @@ export default class Main extends Component {
                     </article>
                 ))}
                 <div className="actions">
-                    <button>Previous</button>
-                    <button>Next</button>
+                    <button disabled= {page === 1} onClick= {this.prevPag}>Previous</button>
+                    <button disabled = {page === productInfo.pages} onClick= {this.nextPag}>Next</button>
                 </div>
             </div>
 
