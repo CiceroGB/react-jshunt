@@ -18,5 +18,11 @@ module.exports = {
     'react',
   ],
   rules: {
+    'react/jsx-filename-extension': [
+      'warn',
+      {
+        extensions: ['.jsx', '.js'],
+      },
+    ],
   },
 };
