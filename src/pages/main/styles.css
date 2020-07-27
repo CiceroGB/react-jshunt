@@ -55,4 +55,9 @@
     color: #fff;
     font-size: 14px;
     font-weight: bold;
+    cursor:pointer;
+}
+
+.product-list .actions button:hover {
+    opacity: 0.7;
 }
